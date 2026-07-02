@@ -1,0 +1,20 @@
+# inputs
+*.pdf
+*.PDF
+*.png
+*.jpg
+*.jpeg
+annotations*.xml
+# generated data / results
+data/
+runs/
+outputs/
+OCR Result/
+*_ocr.xml
+*_predictions.xml
+# models & envs
+*.pt
+venv/
+screw/
+__pycache__/
+*.pyc
