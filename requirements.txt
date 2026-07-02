@@ -1,0 +1,32 @@
+# ── Screw-Spec ROI YOLO Pipeline — Python dependencies ──────────────
+# Python 3.10+ required.
+#
+# Install:   pip install -r requirements.txt
+#
+# Notes:
+#  * `ultralytics` pulls in torch/torchvision automatically. For GPU,
+#    install the CUDA build of torch FIRST (see README), then this file.
+#  * Versions below are the ones this pipeline was verified against;
+#    newer patch releases are normally fine.
+
+ultralytics==8.4.72        # YOLOv8 training + inference
+PyMuPDF==1.27.2            # PDF -> image rendering, draw boxes on PDF  (import name: fitz)
+Pillow==12.1.1            # image size checks / IO
+PyYAML==6.0.3            # write/read data.yaml
+numpy==2.4.4
+
+# torch/torchvision are installed transitively by ultralytics.
+# Pinned here for reproducibility (CPU build shown; for GPU see README):
+torch==2.12.1
+torchvision==0.27.1
+
+# ── OCR step (scripts/ocr_roi.py) ──────────────────────────────────────
+pytesseract==0.3.13        # Python wrapper for the Tesseract OCR engine (default)
+# NOTE: pytesseract needs the Tesseract *binary* installed on the system:
+#   Ubuntu/Debian:  sudo apt-get install tesseract-ocr
+#   macOS (brew):   brew install tesseract
+#   Windows:        install from https://github.com/UB-Mannheim/tesseract/wiki
+#
+# Optional, higher-accuracy engine for rotated engineering text (--engine paddle):
+#   pip install paddleocr paddlepaddle
+# PaddleOCR downloads its models on first run (needs internet once).
